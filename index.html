@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="./style/css/styles.css">
-        
-    </head> 
-    <body>
-        <div class="container">
-            <div >
-                <h1 class = "header_text">Crush mo ba ako?</h1>
-            </div>
-            <div class="gif_container">
-                <img src="https://media.giphy.com/media/LnKonfpQ44fNvuGLkA/giphy.gif" alt="Cute animated illustration">
-            </div>
-            <div class = "buttons">
-                <button class="btn" id = "yesButton" onclick="nextPage()">Yes</button>
-                <button class="btn" id="noButton" onclick="enlargeYesButton()">No</button>
-                <script>
-                    function nextPage() {
-                        window.location.href = "yes.html";
-                    }
+<head>
+    <link rel="stylesheet" href="./style/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 class="header_text">Crush mo ba ako?</h1>
+        </div>
+        <div class="gif_container">
+            <img src="https://media.giphy.com/media/LnKonfpQ44fNvuGLkA/giphy.gif" alt="Cute animated illustration">
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton">Yes</button>
+            <button class="btn" id="noButton">No</button>
+        </div>
 
-function enlargeYesButton() {
-    var yesButton = document.getElementById('yesButton');
-    var currentSize = window.getComputedStyle(yesButton).fontSize;
-    var newSize = parseFloat(currentSize) * 1.2; // Increase the size by 20%
-    yesButton.style.fontSize = newSize + 'px';
-}
-</script> 
-</div>
-</div>
-</body> 
+        <script>
+            function nextPage() {
+                window.location.href = "yes.html";
+            }
+
+            function enlargeButton(buttonId) {
+                var button = document.getElementById(buttonId);
+                var currentSize = window.getComputedStyle(button).fontSize;
+                var newSize = parseFloat(currentSize) * 1.2; // Increase the size by 20%
+                button.style.fontSize = newSize + 'px';
+            }
+
+            // Add click event listeners to both buttons
+            document.getElementById('yesButton').addEventListener('click', function() {
+                enlargeButton('yesButton');
+                nextPage();
+            });
+
+            document.getElementById('noButton').addEventListener('click', function() {
+                enlargeButton('yesButton'); // Enlarge the "yes" button as well
+            });
+        </script>
+    </div>
+</body>
 </html>
