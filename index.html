@@ -21,11 +21,16 @@
                 window.location.href = "yes.html";
             }
 
-            function enlargeButton(buttonId) {
-                var button = document.getElementById(buttonId);
-                var currentSize = window.getComputedStyle(button).fontSize;
-                var newSize = parseFloat(currentSize) * 1.2; // Increase the size by 20%
-                button.style.fontSize = newSize + 'px';
+            function moveToRandomPosition(elementId) {
+                var element = document.getElementById(elementId);
+                var maxX = window.innerWidth - element.clientWidth;
+                var maxY = window.innerHeight - element.clientHeight;
+
+                var randomX = Math.floor(Math.random() * maxX);
+                var randomY = Math.floor(Math.random() * maxY);
+
+                element.style.left = randomX + 'px';
+                element.style.top = randomY + 'px';
             }
 
             // Add click event listeners to both buttons
@@ -35,8 +40,15 @@
             });
 
             document.getElementById('noButton').addEventListener('click', function() {
-                enlargeButton('yesButton'); // Enlarge the "yes" button as well
+                moveToRandomPosition('noButton');
             });
+
+            function enlargeButton(buttonId) {
+                var button = document.getElementById(buttonId);
+                var currentSize = window.getComputedStyle(button).fontSize;
+                var newSize = parseFloat(currentSize) * 1.2; // Increase the size by 20%
+                button.style.fontSize = newSize + 'px';
+            }
         </script>
     </div>
 </body>
